@@ -33,7 +33,9 @@ namespace ETicaretAPI.API.Controllers
                 new(){Id=Guid.NewGuid(), Name="Product 2", Price=300,Stock=20},
                 new(){Id=Guid.NewGuid(), Name="Product 3", Price=500,Stock=30},
             });
-          
+
+            await _productWriteRepository.SaveAsync();
+
 
 
             //Product p=await _productReadRepository.GetByIdAsync("eab4d3e7-ad97-4e5f-8b89-db79e0d30e26",false);
@@ -43,13 +45,13 @@ namespace ETicaretAPI.API.Controllers
 
             //await _productWriteRepository.AddAsync(new() { Name = "Product --- 1", Price = 1.500F, Stock = 10, CreatedDate = DateTime.UtcNow });
             //await _productWriteRepository.SaveAsync();
-            var custmerId=Guid.NewGuid();
-            await _customerWriteRepository.AddAsync(new() { Id = custmerId, Name = "Muiidin" });
+            //var custmerId =Guid.NewGuid();
+            //await _customerWriteRepository.AddAsync(new() { Id = custmerId, Name = "Muiidin" });
 
 
-            await _orderWriteRepository.AddAsync(new() { Id = Guid.NewGuid(), Address="test",Description="aciklama",CustomerId= custmerId });
-            await _orderWriteRepository.AddAsync(new() { Id = Guid.NewGuid(), Address="test2",Description="aciklama2",CustomerId= custmerId });
-            await _orderWriteRepository.SaveAsync();
+            //await _orderWriteRepository.AddAsync(new() { Id = Guid.NewGuid(), Address="test",Description="aciklama",CustomerId= custmerId });
+            //await _orderWriteRepository.AddAsync(new() { Id = Guid.NewGuid(), Address="test2",Description="aciklama2",CustomerId= custmerId });
+            //await _orderWriteRepository.SaveAsync();
 
         }
 
