@@ -25,6 +25,7 @@ namespace ETicaretAPI.API.Controllers
         public async Task<IActionResult> Get()
         {
             return Ok(_productReadRepository.GetAll(false));
+            //bu yorum satiri rider uzerinden yapilmistir test
         }
 
         [HttpGet("{id}")]
