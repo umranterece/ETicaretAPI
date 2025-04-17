@@ -20,6 +20,7 @@ namespace ETicaretAPI.API.Controllers
         {
             _productWriteRepository = productWriteRepository;
             _productReadRepository = productReadRepository;
+            // test
         }
 
         [HttpGet]
