@@ -15,18 +15,22 @@ namespace ETicaretAPI.API.Controllers
     {
         private readonly IProductWriteRepository _productWriteRepository;
         private readonly IProductReadRepository _productReadRepository;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ProductsController(IProductWriteRepository productWriteRepository, IProductReadRepository productReadRepository)
+        public ProductsController(IProductWriteRepository productWriteRepository,
+            IProductReadRepository productReadRepository,
+            IWebHostEnvironment webHostEnvironment)
         {
             _productWriteRepository = productWriteRepository;
             _productReadRepository = productReadRepository;
+            _webHostEnvironment = webHostEnvironment;
             // test
         }
 
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery]Pagination pagination)
         {
-            // await Task.Delay(5000);
+            await Task.Delay(1000);
             var totalCount = _productReadRepository.GetAll(false).Count();
             var products= _productReadRepository.GetAll(false).Select(p=>new
             {
@@ -81,6 +85,26 @@ namespace ETicaretAPI.API.Controllers
             await _productWriteRepository.RemoveAsync(id);
             await _productWriteRepository.SaveAsync();
             return StatusCode((int)HttpStatusCode.NoContent);
+        }
+        [HttpPost("[action]")]
+        public async Task<IActionResult> Upload()
+        {
+            string uploadPath=Path.Combine(_webHostEnvironment.WebRootPath, "resource/product-images");
+            if (!Directory.Exists(uploadPath))
+            {
+                Directory.CreateDirectory(uploadPath);
+            }
+            
+            Random r=new Random();
+            foreach (IFormFile file in Request.Form.Files)
+            {
+                string fullPath = Path.Combine(uploadPath, $"{r.Next()}{Path.GetExtension(file.FileName)}");
+                using FileStream fileStream = new(fullPath, FileMode.Create, FileAccess.Write, FileShare.None,
+                    1024 * 1024, useAsync: false);
+                await file.CopyToAsync(fileStream);
+                await fileStream.FlushAsync();
+            }
+            return Ok();
         }
 
     }
