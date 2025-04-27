@@ -27,7 +27,12 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
-    <Folder Include="wwwroot\resource\product-images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\resource\product-images\462214278.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\resource\product-images\Ekran-Resmi-2025-04-23-14-20-25.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\resource\product-images\ornek-resim----.png" />
   </ItemGroup>
 
 </Project>
