@@ -33,6 +33,9 @@
     <_ContentIncludedByDefault Remove="wwwroot\resource\product-images\462214278.png" />
     <_ContentIncludedByDefault Remove="wwwroot\resource\product-images\Ekran-Resmi-2025-04-23-14-20-25.png" />
     <_ContentIncludedByDefault Remove="wwwroot\resource\product-images\ornek-resim----.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\resource\product-images\1972128222.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\resource\product-images\2004315257.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\resource\product-images\556030141.png" />
   </ItemGroup>
 
 </Project>

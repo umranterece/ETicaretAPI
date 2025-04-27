@@ -82,6 +82,7 @@ namespace ETicaretAPI.API.Controllers
             await _productWriteRepository.SaveAsync();
             return StatusCode((int)HttpStatusCode.Created);
         }
+        //todo
 
         [HttpPut]
         public async Task<IActionResult> Put(VM_Update_Product model)
