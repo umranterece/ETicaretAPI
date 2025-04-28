@@ -1,36 +1,11 @@
-using ETicaretAPI.Application.Services;
 using ETicaretAPI.Infrastructure.Operations;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 
 namespace ETicaretAPI.Infrastructure.Services;
 
-public class FileService : IFileService
+public class FileService 
 {
-    readonly IWebHostEnvironment _env;
-
-    public FileService(IWebHostEnvironment env)
-    {
-        _env = env;
-    }
-
-    public async Task<bool> CopyFileAsync(string path, IFormFile file)
-    {
-        try
-        {
-            await using FileStream fileStream = new(path, FileMode.Create, FileAccess.Write, FileShare.None,
-                1024 * 1024, useAsync: false);
-
-            await file.CopyToAsync(fileStream);
-            await fileStream.FlushAsync();
-            return true;
-        }
-        catch (Exception ex)
-        {
-            throw ex;
-        }
-    }
-
     async Task<string> FileRenameAsync(string path, string fileName, bool first = true)
     {
         string newFileName = await Task.Run<string>(async () =>
@@ -84,31 +59,5 @@ public class FileService : IFileService
         });
 
         return newFileName;
-    }
-
-    public async Task<List<(string fileName, string path)>> UploadAsync(string path, IFormFileCollection files)
-    {
-        string uploadPath = Path.Combine(_env.WebRootPath, path);
-        if (!Directory.Exists(uploadPath))
-            Directory.CreateDirectory(uploadPath);
-
-        List<(string fileName, string path)> datas = new();
-        List<bool> results = new();
-        foreach (IFormFile file in files)
-        {
-
-            string fileNewName = await FileRenameAsync(uploadPath, file.FileName);
-
-            bool result = await CopyFileAsync(Path.Combine(uploadPath, fileNewName), file);
-            // datas.Add((fileNewName, $"{uploadPath}{fileNewName}"));
-            datas.Add((fileNewName, Path.Combine(path, fileNewName).Replace("\\", "/")));
-            results.Add(result);
-        }
-
-        if (results.TrueForAll(r => r.Equals(true)))
-            return datas;
-
-        return null;
-
     }
 }
