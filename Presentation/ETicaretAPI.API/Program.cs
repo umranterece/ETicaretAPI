@@ -1,6 +1,7 @@
 using ETicaretAPI.Application.Validators.Products;
 using ETicaretAPI.Infrastructure;
 using ETicaretAPI.Infrastructure.Filters;
+using ETicaretAPI.Infrastructure.Services.Storage.Local;
 using ETicaretAPI.Persistence;
 using FluentValidation.AspNetCore;
 
@@ -9,7 +10,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 //ServiceRegistration Operasyonlarim
 builder.Services.AddPersistenceServices();
-builder.Services.AddInfrastructureServices();    
+builder.Services.AddInfrastructureServices();
+
+// builder.Services.AddStorage(StorogeType.Azure);
+builder.Services.AddStorage<LocalStorage>();
+
 //builder.Services.AddCors(options => options.AddDefaultPolicy(policy => 
 //    policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));
 
