@@ -139,6 +139,9 @@ namespace ETicaretAPI.API.Controllers
             // //sadece invoice file sorgusu
             // var d3=_productImageFileReadRepository.GetAll(false); 
             // // sadece product image file sorgusu
+            int sayi1 = 2;
+            int sayi2 = 2;
+            Console.WriteLine($"Sayi1: {sayi1*sayi2}");
             return Ok();
         }
     }
