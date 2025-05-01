@@ -58,6 +58,6 @@ public class LocalStorage: Storage, ILocalStorage
         return dir.GetFiles().Select(f => f.Name).ToList();
     }
 
-    public bool HasFile(string path, string fileName)
-    => File.Exists(Path.Combine(path, fileName));
+    public bool HasFile(string path, string fileName)=>File.Exists(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", path, fileName));
+    
 }
