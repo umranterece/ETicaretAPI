@@ -139,7 +139,7 @@ namespace ETicaretAPI.API.Controllers
             // var d2=_invoiceFileReadRepository.GetAll(false);
             // //sadece invoice file sorgusu
             // var d3=_productImageFileReadRepository.GetAll(false); 
-            // // sadece product image file sorgusu
+            // sadece product image file sorgusu
            
             return Ok();
         }
