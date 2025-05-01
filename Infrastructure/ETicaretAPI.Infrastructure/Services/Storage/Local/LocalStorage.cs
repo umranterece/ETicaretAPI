@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace ETicaretAPI.Infrastructure.Services.Storage.Local;
 
-public class LocalStorage:ILocalStorage
+public class LocalStorage: Storage, ILocalStorage
 {
     readonly IWebHostEnvironment _env;
 
@@ -21,8 +21,10 @@ public class LocalStorage:ILocalStorage
         List<(string fileName, string path)> datas = new();
         foreach (IFormFile file in files)
         {
-            await CopyFileAsync(Path.Combine(uploadPath, file.FileName), file);
-            datas.Add((file.FileName, Path.Combine(path, file.FileName).Replace("\\", "/")));
+            string fileNewName= await FileRenameAsync(path , file.Name, HasFile);
+
+            await CopyFileAsync(Path.Combine(uploadPath, fileNewName), file);
+            datas.Add((fileNewName, Path.Combine(path, fileNewName).Replace("\\", "/")));
         }
         return datas;
     }

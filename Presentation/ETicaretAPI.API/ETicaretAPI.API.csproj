@@ -36,6 +36,7 @@
     <_ContentIncludedByDefault Remove="wwwroot\resource\product-images\1972128222.png" />
     <_ContentIncludedByDefault Remove="wwwroot\resource\product-images\2004315257.png" />
     <_ContentIncludedByDefault Remove="wwwroot\resource\product-images\556030141.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\resource\files\delete.png" />
   </ItemGroup>
 
 </Project>

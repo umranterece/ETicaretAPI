@@ -82,7 +82,6 @@ namespace ETicaretAPI.API.Controllers
             await _productWriteRepository.SaveAsync();
             return StatusCode((int)HttpStatusCode.Created);
         }
-        //todo
 
         [HttpPut]
         public async Task<IActionResult> Put(VM_Update_Product model)
@@ -107,7 +106,7 @@ namespace ETicaretAPI.API.Controllers
         public async Task<IActionResult> Upload()
         {
             
-            var datas=await _storageService.UploadAsync("resource/files", Request.Form.Files);
+            var datas=await _storageService.UploadAsync("files", Request.Form.Files);
             await _productImageFileWriteRepository.AddRangeAsync(datas.Select(d => new ProductImageFile()
             {
                 FileName = d.fileName,
