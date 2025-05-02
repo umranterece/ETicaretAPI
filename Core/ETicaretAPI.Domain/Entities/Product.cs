@@ -16,5 +16,6 @@ namespace ETicaretAPI.Domain.Entities
 
         //Relational Properties
         public ICollection<Order> Orders { get; set; }
+        public ICollection<ProductImageFile> ProductImageFiles { get; set; }
     }
 }
