@@ -1,3 +1,4 @@
+using ETicaretAPI.Application;
 using ETicaretAPI.Application.Validators.Products;
 using ETicaretAPI.Infrastructure;
 using ETicaretAPI.Infrastructure.Filters;
@@ -12,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 //ServiceRegistration Operasyonlarim
 builder.Services.AddPersistenceServices();
 builder.Services.AddInfrastructureServices();
+builder.Services.AddApplicationServices();
 
 // builder.Services.AddStorage(StorogeType.Azure);
 // builder.Services.AddStorage<LocalStorage>();

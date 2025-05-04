@@ -39,6 +39,8 @@
     <_ContentIncludedByDefault Remove="wwwroot\resource\files\delete.png" />
     <_ContentIncludedByDefault Remove="wwwroot\files\Ekran-Resmi-2025-04-23-14-20-25.png" />
     <_ContentIncludedByDefault Remove="wwwroot\files\Ekran-Resmi-2025-04-23-14-20-26.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\files\edit-2.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\files\edit.png" />
   </ItemGroup>
 
 </Project>
