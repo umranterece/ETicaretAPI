@@ -20,7 +20,7 @@ public class GoogleLoginCommandHandler: IRequestHandler<GoogleLoginCommandReques
     {
         var settings = new GoogleJsonWebSignature.ValidationSettings()
         {
-            Audience = new List<string>() { "example" }
+            Audience = new List<string>() { "585032283225-4mbeeh51siinulnl1a73ic5s7l5lmbt4.apps.googleusercontent.com" }
         };
 
         var payload=await GoogleJsonWebSignature.ValidateAsync(request.IdToken, settings);
